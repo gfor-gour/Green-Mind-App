@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_mind/home_screen_std.dart';
 import 'package:green_mind/main.dart';
 import 'package:green_mind/register_screen.dart';
 import 'package:green_mind/splash_screen.dart';
@@ -120,7 +121,7 @@ class _Login_screenState extends State<Login_screen> {
                        String uPass = passText.text.toString();
                           Navigator.push(context,
                           MaterialPageRoute(builder:
-                              (context) => MyHomePage(title: 'Green Mind'),)
+                              (context) => HomeScreen_Std(),)
                           );
                      }, child: Text(
                        'LOG IN',style: TextStyle(color: Colors.black),
@@ -140,7 +141,8 @@ class _Login_screenState extends State<Login_screen> {
                        );
                      }, child: Text(
                        'REGISTER',style: TextStyle(color: Colors.black),
-                     )),
+                     )
+                     ),
                    ),
              ],
 

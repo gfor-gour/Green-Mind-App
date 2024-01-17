@@ -41,15 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
 
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/istockphoto-117613065-612x612.jpg"),
-            fit: BoxFit.cover,
-          )
-        ),
-
-           ),
-
+        color: Colors.white,
+      ),
     );
   }
 }

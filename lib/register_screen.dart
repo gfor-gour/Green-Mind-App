@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_mind/home_screen_doc.dart';
+import 'package:green_mind/home_screen_std.dart';
 import 'package:green_mind/main.dart';
 
 class Register_screen extends StatefulWidget {
@@ -87,31 +89,7 @@ class _register_screenState extends State<Register_screen> {
                       ),
                     ),
                   ),
-                  // Container(
-                  //   width: 300,
-                  //   child: TextField(
-                  //    
-                  //     decoration: InputDecoration(
-                  //      
-                  //       focusedBorder: OutlineInputBorder(
-                  //           borderRadius: BorderRadius.circular(21),
-                  //           borderSide: BorderSide(
-                  //             color: Colors.black,
-                  //             width: 3,
-                  //           )
-                  //       ),
-                  //
-                  //       enabledBorder: OutlineInputBorder(
-                  //
-                  //           borderRadius: BorderRadius.circular(21),
-                  //           borderSide: BorderSide(
-                  //             color: Colors.black38,
-                  //             width: 2,
-                  //           )
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+
                   SizedBox(
                     height: 10,
                   ),
@@ -209,12 +187,18 @@ class _register_screenState extends State<Register_screen> {
                     height: 50,
                     color: Colors.blue.shade800,
                     child: OutlinedButton(onPressed: (){
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => MyHomePage(title: 'GreenMind'),)
-                      );
+                        if(_selected == 'Doctor')
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => HomeScreen_Doc(),)
+                          );
+                        if(_selected == 'Student')
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) => HomeScreen_Std(),)
+                                    );
                     }, child: Text(
-                      'SingUp',style: TextStyle(color: Colors.black, fontSize: 25),
-                    )),
+                      'SignUp',style: TextStyle(color: Colors.black, fontSize: 25),
+                    )
+                    ),
                   ),
                 ],
               ),
