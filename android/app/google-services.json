@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "245622335373",
+    "project_id": "green-mind-app",
+    "storage_bucket": "green-mind-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245622335373:android:880b209f0b2cc19b203fc4",
+        "android_client_info": {
+          "package_name": "com.example.green_mind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzTsvtB_s4YXcrfUlaJbPWVpYiQEGqDG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

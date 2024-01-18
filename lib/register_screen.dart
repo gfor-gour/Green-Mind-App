@@ -89,7 +89,6 @@ class _register_screenState extends State<Register_screen> {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 10,
                   ),
