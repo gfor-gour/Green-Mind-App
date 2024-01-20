@@ -2,6 +2,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_mind/msg_screen_std.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class HomeScreen_Std extends StatefulWidget{
@@ -21,6 +22,43 @@ class _homescreen_std_state extends State<HomeScreen_Std>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green.shade300,
+
+        actions: <Widget>[
+          IconButton(
+            onPressed: (){
+
+            },
+            icon: const Icon(Icons.logout),color: Colors.black,
+          ),
+
+        ],
+        leading: IconButton(
+          icon: const Icon(Icons.message_outlined),color: Colors.black,
+          onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context)=> MsgScreenStd(),)
+            );
+          },
+        ),
+        title: RichText(
+            text: TextSpan(
+                style: TextStyle(
+                  color: Colors.green.shade600,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: <TextSpan>[
+                  TextSpan(text:'Green ', style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  )),
+                  TextSpan(text:'Mind',)
+                ]
+            )
+        ),
+      ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         color: Colors.green.shade400,
@@ -47,25 +85,9 @@ class _homescreen_std_state extends State<HomeScreen_Std>{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
 
-                  RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                            color: Colors.green.shade600,
-                            fontSize: 45,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(text:'Green ', style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            )),
-                            TextSpan(text:'Mind',)
-                          ]
-                      )
-                  ),
 
                   if(_pageNum==0)
                     Container(
@@ -96,7 +118,7 @@ class _homescreen_std_state extends State<HomeScreen_Std>{
                             ),
                           ),
                           SizedBox(
-                            height: 80,
+                            height: 50,
                           ),
 
                           Container(

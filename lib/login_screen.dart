@@ -1,18 +1,53 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_mind/home_screen_doc.dart';
 import 'package:green_mind/home_screen_std.dart';
 import 'package:green_mind/main.dart';
 import 'package:green_mind/register_screen.dart';
 import 'package:green_mind/splash_screen.dart';
 
 class Login_screen extends StatefulWidget{
+  // var name_prfession_regiScreen ;
+  // Login_screen(this.name_prfession_regiScreen);
   @override
   State <Login_screen> createState() => _Login_screenState();
 
 }
 
 class _Login_screenState extends State<Login_screen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+
+  void login() async {
+    String email = emailController.text.trim();
+    String pass = passController.text.trim();
+
+    if(email == "" || pass == ""){
+      print("please fillup all the details");
+    }
+    else{
+      try{
+        UserCredential userCredential = await
+        FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: pass);
+
+        if(userCredential.user != null){
+          // Navigator.popUntil(context,(route) => route.isFirst);
+
+          Navigator.pushReplacement(context,
+              CupertinoPageRoute(builder:
+                  (context) => HomeScreen_Std(),
+              )
+          );
+        }
+      } on FirebaseAuthException catch(ex){
+        print(ex.code.toString());
+      }
+
+    }
+  }
+
   var emailText = TextEditingController();
   var passText = TextEditingController();
   @override
@@ -54,7 +89,7 @@ class _Login_screenState extends State<Login_screen> {
                Container(
                  width: 300,
                  child: TextField(
-                   controller: emailText,
+                   controller: emailController,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(21),
@@ -84,7 +119,7 @@ class _Login_screenState extends State<Login_screen> {
                Container(
                  width: 300,
                  child: TextField(
-                   controller: passText,
+                   controller: passController,
                    obscureText: true,
                    obscuringCharacter: "*",
                    decoration: InputDecoration(
@@ -112,17 +147,18 @@ class _Login_screenState extends State<Login_screen> {
                SizedBox(
                  height: 10,
                ),
-                   Container(
+               Container(
                      width: 90,
                      height: 35,
                      color: Colors.blue.shade800,
                      child: OutlinedButton(onPressed: (){
-                       String uEmail = emailText.text.toString();
-                       String uPass = passText.text.toString();
-                          Navigator.push(context,
-                          MaterialPageRoute(builder:
-                              (context) => HomeScreen_Std(),)
-                          );
+                       login();
+                       // String uEmail = emailText.text.toString();
+                       // String uPass = passText.text.toString();
+                          // Navigator.push(context,
+                          // MaterialPageRoute(builder:
+                          //     (context) => HomeScreen_Std(),)
+                          // );
                      }, child: Text(
                        'LOG IN',style: TextStyle(color: Colors.black),
                      )),
@@ -131,7 +167,7 @@ class _Login_screenState extends State<Login_screen> {
                SizedBox(
                  height: 10,
                ),
-                   Container(
+               Container(
                      width: 100,
                      height: 40,
                      color: Colors.blue.shade800,

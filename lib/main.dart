@@ -4,6 +4,7 @@ import 'package:green_mind/splash_screen.dart';
 import 'firebase_options.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

@@ -3,6 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:green_mind/home_screen_std.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:green_mind/msg_screen_doc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class HomeScreen_Doc extends StatefulWidget{
@@ -26,13 +27,15 @@ class _homescreen_doc_state extends State<HomeScreen_Doc>{
 
         actions: <Widget>[
           IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.calendar_month),color: Colors.black,
+              onPressed: (){
+
+              },
+              icon: const Icon(Icons.logout),color: Colors.black,
           ),
 
         ],
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),color: Colors.black,
+          icon: const Icon(Icons.calendar_month),color: Colors.black,
           onPressed: (){
 
           },
@@ -101,7 +104,9 @@ class _homescreen_doc_state extends State<HomeScreen_Doc>{
                       iconSize: 35,
                       color: Colors.black,
                       onPressed: () {
-
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=> MsgScreenDoc(),)
+                          );
                       },
                     ),
                   );
