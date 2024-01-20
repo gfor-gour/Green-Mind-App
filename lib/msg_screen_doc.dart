@@ -19,7 +19,14 @@ class _MsgScreenState extends State<MsgScreenDoc> {
 
         actions: <Widget>[
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              var calndr_date = showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2022),
+                lastDate: DateTime(2100),
+              );
+            },
             icon: const Icon(Icons.calendar_month),color: Colors.black,
           ),
 

@@ -37,12 +37,12 @@ class _register_screenState extends State<Register_screen> {
         FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: pass);
         if(userCredential.user != null){
           if(_selected == 'Doctor')
-            Navigator.pop(context,  MaterialPageRoute(
+            Navigator.pushReplacement(context, CupertinoPageRoute(
             builder: (context) => HomeScreen_Doc(),
           )
           );
           if(_selected == 'Student')
-            Navigator.pop(context,  MaterialPageRoute(
+            Navigator.pushReplacement(context, CupertinoPageRoute(
               builder: (context) => HomeScreen_Std(),
             )
             );

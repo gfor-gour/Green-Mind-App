@@ -2,8 +2,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:green_mind/login_screen.dart';
 import 'package:green_mind/msg_screen_std.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen_Std extends StatefulWidget{
   @override
@@ -19,6 +21,15 @@ class _homescreen_std_state extends State<HomeScreen_Std>{
     super.initState();
   }
 
+  void logout() async{
+    await FirebaseAuth.instance.signOut();
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(context, CupertinoPageRoute(
+        builder: (context)=> Login_screen()
+    )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +39,7 @@ class _homescreen_std_state extends State<HomeScreen_Std>{
         actions: <Widget>[
           IconButton(
             onPressed: (){
-
+              logout();
             },
             icon: const Icon(Icons.logout),color: Colors.black,
           ),

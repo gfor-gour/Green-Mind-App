@@ -1,8 +1,10 @@
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:green_mind/home_screen_std.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:green_mind/login_screen.dart';
 import 'package:green_mind/msg_screen_doc.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -18,6 +20,14 @@ class _homescreen_doc_state extends State<HomeScreen_Doc>{
   void initState(){
     super.initState();
   }
+  void logout() async{
+    await FirebaseAuth.instance.signOut();
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(context, CupertinoPageRoute(
+        builder: (context)=> Login_screen()
+    )
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +38,7 @@ class _homescreen_doc_state extends State<HomeScreen_Doc>{
         actions: <Widget>[
           IconButton(
               onPressed: (){
-
+                    logout();
               },
               icon: const Icon(Icons.logout),color: Colors.black,
           ),
@@ -37,7 +47,12 @@ class _homescreen_doc_state extends State<HomeScreen_Doc>{
         leading: IconButton(
           icon: const Icon(Icons.calendar_month),color: Colors.black,
           onPressed: (){
-
+            var calndr_date = showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime(2022),
+              lastDate: DateTime(2100),
+            );
           },
         ),
         title: RichText(
